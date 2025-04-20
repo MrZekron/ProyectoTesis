@@ -1,15 +1,27 @@
+<<<<<<< HEAD
+=======
+{% load static %}
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión - Agua Segura</title>
 
     <!-- Bootstrap 5 CSS -->
+=======
+    <title>Iniciar Sesión - Agua Segura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet" />
 
+<<<<<<< HEAD
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -21,6 +33,21 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'inicio' %}">Agua Segura</a>
+=======
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/iniciar_sesion.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavbar">
+      <div class="container-fluid">
+        <a class="navbar-brand aqua" href="{% url 'inicio' %}">Agua Segura</a>
+
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
         <button
           class="navbar-toggler"
           type="button"
@@ -28,6 +55,7 @@
           data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
+<<<<<<< HEAD
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto"></ul>
           <a
@@ -35,10 +63,22 @@
             href="{% url 'registrar_usuario' %}"
             >Registrarse</a
           >
+=======
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto"></ul>
+          <button
+            class="btn btn-outline-secondary me-2"
+            onclick="toggleDarkMode()"
+            title="Modo oscuro/claro">
+            <i id="modeIcon" class="fas fa-moon"></i>
+          </button>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
         </div>
       </div>
     </nav>
 
+<<<<<<< HEAD
     <!-- FORMULARIO DE INICIO DE SESIÓN -->
     <div class="container mt-5">
       <div class="row justify-content-center">
@@ -54,6 +94,28 @@
 
               <!-- Formulario de login -->
               <form method="POST" action="">
+=======
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title text-center aqua">👤 Iniciar Sesión</h3>
+              <p class="text-center text-muted mb-4">
+                Ingresa tus credenciales para acceder a tu cuenta
+              </p>
+
+              <!-- 🔔 Mostrar mensajes de error -->
+              {% if messages %} {% for message in messages %}
+              <div
+                class="alert alert-{{ message.tags }} text-center"
+                role="alert">
+                {{ message }}
+              </div>
+              {% endfor %} {% endif %}
+
+              <form method="POST">
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
                 {% csrf_token %}
                 <div class="mb-3">
                   <label for="email" class="form-label"
@@ -61,15 +123,25 @@
                   >
                   <input
                     type="email"
+<<<<<<< HEAD
                     class="form-control"
                     id="email"
                     name="email"
                     required />
                 </div>
+=======
+                    name="correo"
+                    id="email"
+                    class="form-control"
+                    required />
+                </div>
+
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
                 <div class="mb-3">
                   <label for="contrasena" class="form-label">Contraseña</label>
                   <input
                     type="password"
+<<<<<<< HEAD
                     class="form-control"
                     id="contrasena"
                     name="contrasena"
@@ -85,10 +157,55 @@
                 ¿No tienes cuenta?
                 <a href="{% url 'registrar_usuario' %}">Regístrate aquí</a>
               </p>
+=======
+                    name="contrasena"
+                    id="contrasena"
+                    class="form-control"
+                    required />
+                </div>
+
+                <button type="submit" class="btn btn-login w-100">
+                  🔐 Iniciar Sesión
+                </button>
+
+                <!-- 🔁 Botón de registro -->
+                <a
+                  href="{% url 'registrar_usuario' %}"
+                  class="btn btn-outline-primary w-100 mt-3">
+                  📝 ¿No tienes cuenta? Regístrate aquí
+                </a>
+              </form>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
+=======
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const navbar = document.getElementById("mainNavbar");
+        const icon = document.getElementById("modeIcon");
+
+        if (document.body.classList.contains("dark-mode")) {
+          navbar.classList.remove("navbar-light", "bg-light");
+          navbar.classList.add("navbar-dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          navbar.classList.remove("navbar-dark");
+          navbar.classList.add("navbar-light", "bg-light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+    </script>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
   </body>
 </html>

@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+{% load static %}
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro de Usuario - Agua Segura</title>
 
@@ -19,6 +24,28 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'inicio' %}">Agua Segura</a>
+=======
+    <title>Registro - Agua Segura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/registro_ususario.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavbar">
+      <div class="container-fluid">
+        <a class="navbar-brand aqua" href="{% url 'inicio' %}">Agua Segura</a>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
         <button
           class="navbar-toggler"
           type="button"
@@ -28,15 +55,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto"></ul>
+<<<<<<< HEAD
           <a
             class="btn btn-outline-primary"
             href="{% url 'registrar_usuario' %}"
             >Iniciar Sesión</a
           >
+=======
+          <button
+            class="btn btn-outline-secondary me-2"
+            onclick="toggleDarkMode()">
+            <i id="modeIcon" class="fas fa-moon"></i>
+          </button>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
         </div>
       </div>
     </nav>
 
+<<<<<<< HEAD
     <!-- FORMULARIO DE REGISTRO -->
     <div class="container mt-5">
       <div class="row justify-content-center">
@@ -72,5 +108,80 @@
         </div>
       </div>
     </div>
+=======
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow p-4">
+            <h3 class="text-center aqua mb-4">📝 Registro de Usuario</h3>
+
+            {% if messages %} {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} text-center">
+              {{ message }}
+            </div>
+            {% endfor %} {% endif %}
+
+            <form method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  class="form-control"
+                  id="nombre"
+                  required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                  required />
+              </div>
+
+              <div class="mb-3">
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  name="contrasena"
+                  class="form-control"
+                  id="contrasena"
+                  required />
+              </div>
+
+              <button type="submit" class="btn btn-login w-100">
+                Registrar 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const navbar = document.getElementById("mainNavbar");
+        const icon = document.getElementById("modeIcon");
+
+        if (document.body.classList.contains("dark-mode")) {
+          navbar.classList.remove("navbar-light", "bg-light");
+          navbar.classList.add("navbar-dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          navbar.classList.remove("navbar-dark");
+          navbar.classList.add("navbar-light", "bg-light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+    </script>
+>>>>>>> 3dad8c7cdd9fbe7ab92e531190496f6a256f8b11
   </body>
 </html>
