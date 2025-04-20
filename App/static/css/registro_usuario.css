@@ -1,0 +1,80 @@
+:root {
+  --aqua-blue: #00bcd4;
+  --dark-blue: #004d80;
+  --bg-light: #ffffff;
+  --bg-dark: #121212;
+  --text-light: #f0f0f0;
+  --text-dark: #121212;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+  transition: background-color 0.3s ease;
+}
+
+.aqua {
+  color: var(--aqua-blue);
+  font-weight: bold;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn-login {
+  background-color: var(--dark-blue);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #003c66;
+  color: white;
+}
+
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.dark-mode .card {
+  background-color: #1f1f1f;
+  color: var(--text-light);
+}
+
+.dark-mode .form-control {
+  background-color: #2a2a2a;
+  color: var(--text-light);
+  border: 1px solid #555;
+}
+
+.dark-mode .form-control::placeholder {
+  color: #aaa;
+}
+
+.dark-mode .btn-login {
+  background-color: var(--aqua-blue);
+  color: #000;
+}
+
+.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+}
