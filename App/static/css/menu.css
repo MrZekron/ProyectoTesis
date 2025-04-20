@@ -1,0 +1,141 @@
+/* Colores base */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f9fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#modo-oscuro-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+
+main.contenido {
+  padding: 2rem;
+}
+
+.opciones {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-opcion {
+  padding: 0.8rem 1.2rem;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-opcion:hover {
+  background-color: #0b5ed7;
+}
+
+.tanques-lista h3 {
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.btn-tanque {
+  background-color: #4dd4ff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.btn-tanque:hover {
+  background-color: #31c2f2;
+}
+
+.mensaje-vacio {
+  font-style: italic;
+  color: #777;
+  padding: 1rem;
+  background-color: #e7f1f8;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* Modo oscuro */
+body.modo-oscuro {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.modo-oscuro header {
+  background-color: #222;
+}
+
+body.modo-oscuro .btn-opcion {
+  background-color: #444;
+  color: #fff;
+}
+
+body.modo-oscuro .btn-opcion:hover {
+  background-color: #666;
+}
+
+body.modo-oscuro .btn-tanque {
+  background-color: #2e9fd9;
+  color: white;
+}
+
+body.modo-oscuro .btn-tanque:hover {
+  background-color: #218cbe;
+}
+
+body.modo-oscuro .mensaje-vacio {
+  background-color: #1e1e1e;
+  color: #bbb;
+}
+
+body.modo-oscuro footer {
+  background-color: #1e1e1e;
+  color: #888;
+}
