@@ -56,7 +56,8 @@ def registrar_usuario(request):
     else:
         form = UsuarioForm()  # Si no es POST, mostramos el formulario vacío
 
-    return render(request, 'usuarios/registrar_usuario.html', {'form': form})
+    return render(request, 'usuarios/registro_usuario.html', {'form': form})
+
 
 
 

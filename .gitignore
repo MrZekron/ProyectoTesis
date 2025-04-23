@@ -1,0 +1,32 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Entornos virtuales
+venv/
+.env/
+
+# Archivos de VSCode
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de SQLite (si los usas)
+*.sqlite3
+
+# Archivos de log
+*.log
+
+# Archivos de Django
+*.pot
+*.pyc
+
+# Archivos estáticos generados
+staticfiles/
