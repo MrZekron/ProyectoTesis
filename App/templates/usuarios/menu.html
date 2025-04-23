@@ -3,38 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú Principal</title>
-
-    <!-- Estilos y Bootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+    <title>Menú Principal - Agua Segura</title>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
   </head>
   <body>
-    <div class="container mt-4">
-      <h1 class="text-center mb-4">Bienvenido al Sistema Agua Segura</h1>
+    <header>
+      <h1>🌊 Agua Segura</h1>
+      <button id="modo-oscuro-toggle">🌓</button>
+    </header>
 
-      <!-- Menú de navegación con enlaces a vistas -->
-      <div class="list-group">
-        <a
-          href="{% url 'registrar_dispositivo' %}"
-          class="list-group-item list-group-item-action"
-          >Registrar Dispositivo</a
+    <main class="contenido">
+      <h2>Bienvenido, {{ request.user.nombre }}</h2>
+
+      <div class="opciones">
+        <a href="{% url 'registrar_tanque' %}" class="btn-opcion"
+          >➕ Agregar Tanque de Agua</a
         >
-        <a
-          href="{% url 'registrar_tanque_agua' %}"
-          class="list-group-item list-group-item-action"
-          >Registrar Tanque de Agua</a
+        <a href="{% url 'registrar_dispositivo' %}" class="btn-opcion"
+          >➕ Agregar Dispositivo</a
         >
-        <a
-          href="{% url 'registrar_usuario' %}"
-          class="list-group-item list-group-item-action"
-          >Registrar Usuario</a
+        <a href="{% url 'iniciar_sesion' %}" class="btn-opcion cerrar-sesion"
+          >🚪 Cerrar Sesión</a
         >
       </div>
-    </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+      <section class="tanques-lista">
+        <h3>🚰 Tus Tanques de Agua</h3>
+        {% if tanques %}
+        <ul>
+          {% for tanque in tanques %}
+          <li>
+            <form action="{% url 'ver_historial' tanque.id %}" method="get">
+              <button type="submit" class="btn-tanque">
+                💧 {{ tanque.nombre }} ({{ tanque.modelo }})
+              </button>
+            </form>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="mensaje-vacio">No hay tanques registrados 😕</p>
+        {% endif %}
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Agua Segura. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+      const toggleBtn = document.getElementById("modo-oscuro-toggle");
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("modo-oscuro");
+      });
+    </script>
   </body>
 </html>

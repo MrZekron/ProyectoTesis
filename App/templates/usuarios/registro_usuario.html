@@ -1,32 +1,118 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <title>Registro - Agua Segura</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro de Usuario</title>
 
-    <!-- Estilos de Bootstrap y CSS personalizado -->
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/registro_usuario.css' %}" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/registro_ususario.css' %}" />
   </head>
   <body>
-    <div class="container mt-5">
-      <h2 class="text-center">Crear Cuenta</h2>
-
-      <!-- Formulario generado desde el backend con Django -->
-      <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-
-        <!-- Botón para enviar el formulario -->
-        <button type="submit" class="btn btn-success w-100 mt-3">
-          Registrarse
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavbar">
+      <div class="container-fluid">
+        <a class="navbar-brand aqua" href="{% url 'inicio' %}">Agua Segura</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </form>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto"></ul>
+          <button
+            class="btn btn-outline-secondary me-2"
+            onclick="toggleDarkMode()">
+            <i id="modeIcon" class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Bootstrap JS -->
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow p-4">
+            <h3 class="text-center aqua mb-4">📝 Registro de Usuario</h3>
+
+            {% if messages %} {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} text-center">
+              {{ message }}
+            </div>
+            {% endfor %} {% endif %}
+
+            <form method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  class="form-control"
+                  id="nombre"
+                  required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                  required />
+              </div>
+
+              <div class="mb-3">
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  name="contrasena"
+                  class="form-control"
+                  id="contrasena"
+                  required />
+              </div>
+
+              <button type="submit" class="btn btn-login w-100">
+                Registrar 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const navbar = document.getElementById("mainNavbar");
+        const icon = document.getElementById("modeIcon");
+
+        if (document.body.classList.contains("dark-mode")) {
+          navbar.classList.remove("navbar-light", "bg-light");
+          navbar.classList.add("navbar-dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          navbar.classList.remove("navbar-dark");
+          navbar.classList.add("navbar-light", "bg-light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+    </script>
   </body>
 </html>

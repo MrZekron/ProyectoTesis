@@ -1,108 +1,234 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <!-- Metadatos estándar para codificación y visualización responsiva -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agua Segura</title>
 
-    <!-- Bootstrap CSS para estilos prediseñados -->
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
       rel="stylesheet"
-      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-      crossorigin="anonymous" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Bootstrap JS para funcionalidad de componentes como navbar -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-      crossorigin="anonymous"></script>
-
-    <title>Agua Segura</title>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
-
   <body>
-    <!-- NAVBAR (barra de navegación superior) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Agua Segura</a>
-      <!-- Logo o nombre del sitio -->
-
-      <!-- Botón para colapsar el menú en pantallas pequeñas -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavbar">
+      <a class="navbar-brand aqua" href="#">Agua Segura</a>
       <button
         class="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Contenedor de los enlaces del menú -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <!-- Menú desplegable para tanque de agua -->
+        <ul class="navbar-nav me-auto">
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
               id="ventaTanqueDropdown"
               role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
+              data-bs-toggle="dropdown"
               aria-expanded="false">
               Venta de Tanque de Agua
             </a>
-            <div class="dropdown-menu" aria-labelledby="ventaTanqueDropdown">
-              <a class="dropdown-item" href="#">Reparaciones</a>
-              <a class="dropdown-item" href="#">Técnico</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="ventaTanqueDropdown">
+              <li><a class="dropdown-item" href="#">Reparaciones</a></li>
+              <li><a class="dropdown-item" href="#">Técnico</a></li>
+            </ul>
           </li>
 
-          <!-- Menú desplegable para dispositivos -->
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
               id="ventaDispositivoDropdown"
               role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
+              data-bs-toggle="dropdown"
               aria-expanded="false">
               Venta de Dispositivo
             </a>
-            <div
+            <ul
               class="dropdown-menu"
               aria-labelledby="ventaDispositivoDropdown">
-              <a class="dropdown-item" href="#">Reparaciones</a>
-              <a class="dropdown-item" href="#">Técnico</a>
-            </div>
+              <li><a class="dropdown-item" href="#">Reparaciones</a></li>
+              <li><a class="dropdown-item" href="#">Técnico</a></li>
+            </ul>
           </li>
         </ul>
 
-        <!-- Formulario de búsqueda -->
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Buscar"
-            aria-label="Buscar" />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Buscar
-          </button>
-        </form>
+        <div
+          class="d-flex align-items-center ms-auto"
+          style="gap: 10px; width: 100%">
+          <form class="d-flex me-2" style="width: 250px">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Buscar"
+              aria-label="Buscar" />
+          </form>
 
-        <!-- Botón para redirigir a iniciar sesión o crear cuenta -->
-        <a class="btn btn-primary ml-3" href="#" role="button">
-          Crear Cuenta/Iniciar Sesión
-        </a>
+          <button
+            class="btn btn-outline-secondary"
+            onclick="toggleDarkMode()"
+            title="Modo oscuro/claro">
+            <i id="modeIcon" class="fas fa-moon"></i>
+          </button>
+
+          {% if user.is_authenticated %}
+          <div class="dropdown">
+            <button
+              class="btn btn-dark dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              👤 {{ user.username }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{% url 'registrar_dispositivo' %}"
+                  >📟 Agregar Dispositivo</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{% url 'registrar_tanque_agua' %}"
+                  >🚰 Agregar Tanque</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">📊 Monitor</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item text-danger" href="{% url 'logout' %}"
+                  >🔓 Cerrar sesión</a
+                >
+              </li>
+            </ul>
+          </div>
+          {% else %}
+          <a
+            class="btn btn-login"
+            href="{% url 'iniciar_sesion' %}"
+            role="button">
+            Crear Cuenta/Iniciar Sesión
+          </a>
+
+          {% endif %}
+        </div>
       </div>
     </nav>
 
-    <!-- Scripts necesarios para Bootstrap y dependencias -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <main>
+      <!-- 🏡 Bienvenida -->
+      <section class="hero text-center p-5">
+        <h1 class="aqua">💧 Bienvenido a Agua Segura 💧</h1>
+        <p class="lead">
+          Monitorea el estado del agua en tu hogar y protégete de enfermedades
+          💙
+        </p>
+      </section>
+
+      <!-- ⚠️ Problemas asociados al agua estancada -->
+      <section class="info-section container py-4">
+        <div class="row g-4">
+          <!-- 🕳️ Estancamiento -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow">
+              <img
+                src="{% static 'img/estancamiento.png' %}"
+                class="card-img-top"
+                alt="Agua estancada" />
+              <div class="card-body">
+                <h5 class="card-title">🕳️ Problema del Estancamiento</h5>
+                <p class="card-text">
+                  🔎 Se estima que un <strong>62%</strong> de las viviendas con
+                  techos planos presenta acumulación de agua tras lluvias
+                  intensas. Esto favorece la erosión de superficies y la
+                  aparición de criaderos de mosquitos 🦟, afectando la salud del
+                  entorno.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 🏘️ Uso de tanques -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow">
+              <img
+                src="{% static 'img/estancamiento.png' %}"
+                class="card-img-top"
+                alt="Tanques en viviendas" />
+              <div class="card-body">
+                <h5 class="card-title">🏘️ Tanques en Viviendas Urbanas</h5>
+                <p class="card-text">
+                  🏘️ En zonas urbanas de Chile, alrededor del
+                  <strong>28%</strong> de las viviendas utiliza
+                  <em>tanques de agua</em> como respaldo ante cortes del
+                  suministro. Esto ayuda a mantener la continuidad del acceso a
+                  agua, especialmente en barrios periféricos 💦.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 🤒 Enfermedades -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow">
+              <img
+                src="{% static 'img/estancamiento.png' %}"
+                class="card-img-top"
+                alt="Enfermedades por agua" />
+              <div class="card-body">
+                <h5 class="card-title">🤒 Riesgos por Agua No Potable</h5>
+                <p class="card-text">
+                  ⚠️ El <strong>14%</strong> de los casos de enfermedades
+                  gastrointestinales en zonas urbanas está vinculado al consumo
+                  de agua de dudosa procedencia o contaminada. Afecta
+                  especialmente a niñ@s y adultos mayores 🤢.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const navbar = document.getElementById("mainNavbar");
+        const icon = document.getElementById("modeIcon");
+
+        if (document.body.classList.contains("dark-mode")) {
+          navbar.classList.remove("navbar-light", "bg-light");
+          navbar.classList.add("navbar-dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          navbar.classList.remove("navbar-dark");
+          navbar.classList.add("navbar-light", "bg-light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+    </script>
   </body>
 </html>
