@@ -52,7 +52,16 @@ def registrar_usuario(request):
             request.session['usuario_id'] = usuario.id  # Inicia sesión automáticamente
             return redirect('menu')  # Redirige a menu.html
         else:
-            messages.error(request, 'Revisa los datos, algo no está bien 😥')
+            if form.errors.get('email'):
+                if 'ya esta registrado' in str(form.errors['email']):
+                    messages.error(request, '❌ Este correo ya tiene una cuenta registrada.')
+                else:
+                    messages.error(request, '⚠️ Ingresa un correo válido.')
+            if form.errors.get('contrasena'):
+                messages.error(request, '🔐 La contraseña debe tener al menos 8 caracteres.')
+            if form.errors.get('nombre'):
+                messages.error(request, '📝 El nombre no puede estar vacío.')
+            
     else:
         form = UsuarioForm()  # Si no es POST, mostramos el formulario vacío
 

@@ -55,34 +55,17 @@
 
             <form method="POST">
               {% csrf_token %}
+
               <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre completo</label>
-                <input
-                  type="text"
-                  name="nombre"
-                  class="form-control"
-                  id="nombre"
-                  required />
+                {{ form.nombre.label_tag }} {{ form.nombre }}
               </div>
 
               <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  id="email"
-                  required />
+                {{ form.email.label_tag }} {{ form.email }}
               </div>
 
               <div class="mb-3">
-                <label for="contrasena" class="form-label">Contraseña</label>
-                <input
-                  type="password"
-                  name="contrasena"
-                  class="form-control"
-                  id="contrasena"
-                  required />
+                {{ form.contrasena.label_tag }} {{ form.contrasena }}
               </div>
 
               <button type="submit" class="btn btn-login w-100">

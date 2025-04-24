@@ -82,7 +82,7 @@ class UsuarioForm(forms.ModelForm):
             'nombre',  # Nombre del usuario
             'email',  # Email único
             'contrasena',  # Contraseña (enmascarada)
-            'tanque_agua',  # Tanque asociado al usuario
+              
         ]
 
     # Validación personalizada de contraseña (opcional, ya está cubierto por min_length)
