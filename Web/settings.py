@@ -1,20 +1,22 @@
 from pathlib import Path
 import pymysql
+
+# Configura pymysql como driver para MySQL
 pymysql.install_as_MySQLdb()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Ruta base del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# Clave secreta (mantener privada en producción)
 SECRET_KEY = 'django-insecure-#34(06a6z6k=*%urstc(&go84p)h!_pqo3!8@l*u+#c5(_ak-2'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Modo desarrollo
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
-# Application definition
-
+# ------------------------
+# APLICACIONES INSTALADAS
+# ------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,6 +27,9 @@ INSTALLED_APPS = [
     'App',
 ]
 
+# ------------------------
+# MIDDLEWARE
+# ------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,12 +40,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ------------------------
+# URLs y WSGI
+# ------------------------
 ROOT_URLCONF = 'Web.urls'
+WSGI_APPLICATION = 'Web.wsgi.application'
 
+# ------------------------
+# TEMPLATES
+# ------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates',''],  # Asegúrate de incluir aquí la ruta a tus plantillas
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -53,49 +65,45 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Web.wsgi.application'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-
-# Base de datos MySQL (compatible con HeidiSQL)
+# ------------------------
+# BASE DE DATOS (MySQL)
+# ------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AguaSegura',        # Nombre de la base de datos
-        'USER': 'root',            # Usuario de la base de datos
-        'PASSWORD': 'admin',              # Contraseña (si aplica)
-        'HOST': 'localhost',         # Dirección del servidor
-        'PORT': '3306',              # Puerto por defecto de MySQL/MariaDB
+        'NAME': 'AguaSegura',
+        'USER': 'root',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
-# Validación de contraseñas
+# ------------------------
+# VALIDACIÓN DE CONTRASEÑAS
+# ------------------------
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internacionalización
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+# ------------------------
+# INTERNACIONALIZACIÓN
+# ------------------------
+LANGUAGE_CODE = 'es-cl'
+TIME_ZONE = 'America/Santiago'
 USE_I18N = True
 USE_TZ = True
 
-# Archivos estáticos (CSS, JavaScript, imágenes)
-STATIC_URL = 'static/'
+# ------------------------
+# ARCHIVOS ESTÁTICOS
+# ------------------------
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # ⚠️ Asegúrate de que esta carpeta exista
 
-# Tipo de campo de clave primaria por defecto
+# ------------------------
+# ID AUTOINCREMENTAL POR DEFECTO
+# ------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
