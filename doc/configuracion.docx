@@ -1,0 +1,46 @@
+{
+  "editor.matchBrackets": "never",
+  "workbench.sideBar.location": "right",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "workbench.editor.showTabs": "multiple",
+  "files.autoSave": "afterDelay",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.formatOnSave": true,
+  "editor.guides.indentation": false,
+  "indenticator.width": 0.1,
+  "indenticator.color.dark": "rgba(255, 255, 255, 0.1)",
+  "breadcrumbs.enabled": false,
+  "editor.glyphMargin": false,
+  "workbench.statusBar.visible": false,
+  "editor.linkedEditing": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.wordWrap": "on",
+  "diffEditor.wordWrap": "on",
+  "prettier.bracketSameLine": true,
+  "prettier.enableDebugLogs": true,
+  "prettier.experimentalTernaries": true,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Establece Prettier como el formateador predeterminado para todos los lenguajes.
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // También establece Prettier como el formateador para JavaScript.
+  },
+  "python.createEnvironment.trigger": "off",
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "ms-settings"
+  ],
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "explorer.confirmDelete": false
+}
