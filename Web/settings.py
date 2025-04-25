@@ -71,7 +71,7 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AguaSegura',
+        'NAME': 'aguasegura',
         'USER': 'root',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
