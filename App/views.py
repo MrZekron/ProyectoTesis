@@ -12,7 +12,7 @@ def registrar_dispositivo(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Dispositivo registrado correctamente.')
-            return redirect('registrar_dispositivo')
+            return redirect('menu')
         else:
             messages.error(request, 'Error al registrar el dispositivo. Por favor, corrige los errores.')
     else:
@@ -29,7 +29,7 @@ def registrar_tanque_agua(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Tanque de agua registrado correctamente.')
-            return redirect('registrar_tanque_agua')
+            return redirect('menu')
         else:
             messages.error(request, 'Error al registrar el tanque de agua. Por favor, corrige los errores.')
     else:
@@ -108,3 +108,8 @@ def menu(request):
 # -------------------------
 def inicio(request):
     return render(request, 'index.html')
+
+def ver_historial(request, tanque_id):
+    tanque = TanqueAgua.objects.get(id=tanque_id)
+    return render(request, 'tanques/ver_historial.html', {'tanque': tanque})
+

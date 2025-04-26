@@ -1,0 +1,57 @@
+:root {
+  --aqua: #00bcd4;
+  --azul-oscuro: #004d80;
+  --fondo-claro: #ffffff;
+  --fondo-oscuro: #121212;
+  --texto-claro: #f0f0f0;
+  --texto-oscuro: #1a1a1a;
+}
+
+body {
+  background-color: var(--fondo-claro);
+  color: var(--texto-oscuro);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 2rem;
+  background-color: var(--fondo-claro);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.aqua {
+  color: var(--aqua);
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  border-radius: 12px !important;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--aqua);
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+}
+
+.btn-login {
+  background-color: var(--azul-oscuro);
+  color: white;
+  border-radius: 0.6rem;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #003358;
+  color: white;
+}
