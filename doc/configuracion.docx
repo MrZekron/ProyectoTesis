@@ -1,7 +1,7 @@
 {
   "editor.matchBrackets": "never",
   "workbench.sideBar.location": "right",
-  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.colorTheme": "Fuedskeps - Blue",
   "workbench.iconTheme": "material-icon-theme",
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "workbench.editor.showTabs": "multiple",
@@ -42,5 +42,7 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "workbench.productIconTheme": "fluent-icons"
 }
+
