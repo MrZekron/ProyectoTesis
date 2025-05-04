@@ -113,3 +113,7 @@ def ver_historial(request, tanque_id):
     tanque = TanqueAgua.objects.get(id=tanque_id)
     return render(request, 'tanques/ver_historial.html', {'tanque': tanque})
 
+def historial_tanque(request, tanque_id):
+    tanque = TanqueAgua.objects.get(id = tanque_id)
+    return render(request, 'tanques/historial_tanque.html', {'tanque':tanque})
+

@@ -14,7 +14,7 @@
     </header>
 
     <main class="contenido">
-      <h2>Bienvenido, {{ request.user.nombre }}</h2>
+      <h2>Bienvenido, {{ request.user.nombre|default:"Usuario" }}</h2>
 
       <div class="opciones">
         <a href="{% url 'registrar_tanque' %}" class="btn-opcion">

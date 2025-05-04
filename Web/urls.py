@@ -8,6 +8,7 @@ urlpatterns = [
     path('registro-usuario/', views.registrar_usuario, name='registro_usuario'),
     path('iniciar-sesion/', views.iniciar_sesion, name='iniciar_sesion'),
     path('ver-historial/<int:tanque_id>/', views.ver_historial, name='ver_historial'),
+    path('historial-tanque/<int:tanque_id>/', views.historial_tanque, name='ver_historial'),
 
     path('menu/', views.menu, name='menu'),
     path('', views.inicio, name='inicio'),  # Vista de inicio
